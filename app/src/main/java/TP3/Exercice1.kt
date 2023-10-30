@@ -3,8 +3,7 @@ package TP3
 import java.util.Arrays
 
 //Q=>1 :Créer la classe Module
-class Module(val intitule: String,val siRegional: Boolean,val termine: Boolean,val nbHeures: Int)
-
+class Module(var intitule: String,var siRegional: Boolean,var termine: Boolean,var nbHeures: Int)
 //Fonction filter() :
 fun filtrer(number: Array<Int>,app:(Int)->Boolean): Array<Int> {
     var listp= mutableListOf<Int>()
@@ -25,21 +24,26 @@ fun main() {
     var m2 = Module("ST345",false,true,17)
     var m3 = Module("QP789",true,true,8)
     var m4 = Module("XW921",false,false,21)
+//ajouter tout les modules en liste
     modules.add(m1)
     modules.add(m2)
     modules.add(m3)
     modules.add(m4)
+//afficher les informations des modules
     for (module in modules) {
         println("Intitulé: ${module.intitule} , Si régional: ${module.siRegional} , Terminé: ${module.termine} , Nombre d'heures: ${module.nbHeures}")
     }
-    println()
+//afficher les info en forEach
     modules.forEach{ println("Module => ${it.intitule} ; ${it.siRegional} ; ${it.termine} ; ${it.nbHeures}") }
-    println()
+
+//afficher sauf intitule
     modules.forEach{ println("Intituler  : ${it.intitule}") }
-//tester la fonction d’ordre supérieur map() avec expression Lambda
+
+//tester la fonction map() avec expression Lambda
     var menu : List<String> = modules.map { it.intitule }
     menu.forEach { println("${it}") }
     println("menu est ${menu}")
+
 //teste de function filtere
     var numbers = arrayOf<Int>(12,9,10,8,15,1,6)
     val modulesRegionaux = filtrer(numbers,::paire)
